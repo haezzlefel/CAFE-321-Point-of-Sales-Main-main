@@ -30,10 +30,10 @@ h1::before{
   left: 0;
   width: 0%;
   height: 100%;
-  color: #001aff;
+  color: #81848b;
 
-  -webkit-text-stroke: 0vw #001aff;
-  border-right: 2px solid #001aff;
+  -webkit-text-stroke: 0vw #81848b;
+  border-right: 2px solid #81848b;
   overflow: hidden;
   /* transition:animate 6s linear infinite; */
    animation: animate 6s linear infinite;
