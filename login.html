@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyPOS</title>
+
+  <link rel="stylesheet" type="text/css" href="css/login.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+  </script>
+  
+
+</head>
+<body class="bg-dark" onload="">
+  <div class="mt-5">
+
+    <div class="row justify-content-center ">
+      
+      <div class="col-lg-6 m-3 p-4 pb-1">
+        <div class="container col-sm-6 rounded p-4 shadow" style="background-color:  rgb(232, 230, 223);"> 
+          <form name="loginform" class="needs-validation">
+            <h5 class="d-flex justify-content-center pb-3">Admin Login</h5>
+            <div class="form-floating mb-3">
+              <input type="text" value="" class="form-control" id="cashiername" placeholder="Cashier Logged in" disabled="" required />
+              <label for="cashiername" class="form-label text-muted">Cashier Logged in</label>
+            <div class="valid-feedback">Good to go! </div>
+            <div class="invalid-feedback">Select Cashier Name Below</div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" value="" id="cashierpin" placeholder="Enter Pin Number" required />
+              <label for="cashierpin" class="form-label text-muted">Enter Pin Number</label>
+            <div class="valid-feedback">Good to go! </div>
+            <div class="invalid-feedback">Enter Correct Pin</div>
+            </div>
+            <div class="text-center">
+              <button onclick="loginAuthenticate()" type="submit" class="btn btn-dark text btn-sm w-50">Login</button>
+            </div>
+          </form>
+          <hr>
+          <div class="text-center">
+            <h5>Cashier List</h5>
+          </div>  
+          <br>
+          <div class="mx-auto row">
+              <div class="container mx-auto col-sm-12">
+                <div class="container mx-auto row text-center" id="cashierlist">
+                  <div class=" mb-2 col-md-6">
+                    <button value="Zila" id="staticcashier1" onclick="staticCashier1()" type="button" class="btn btn-dark">Zila</button>
+                  </div>
+                  <div class=" mb-2 col-md-6">
+                    <button value="Hanapet" id="staticcashier2" onclick="staticCashier2()" type="button" class="btn btn-dark">Hanapet</button>
+                  </div>
+                  <div class=" mb-2 col-md-6">
+                    <button value="Zia" id="staticcashier3" onclick="staticCashier3()" type="button" class="btn btn-dark">Zia</button>
+                  </div>
+                  <div class=" mb-2 col-md-6">
+                    <button value="Nigu" id="staticcashier4" onclick="staticCashier4()" type="button" class="btn btn-dark">Nigu</button>
+                  </div>
+                </div>
+              </div>
+          </div>       
+          <hr>
+          <div class="text-end">
+            <button type="button" class="btn btn-dark btn-sm w-50" onclick="window.location.assign('emailsupport.html')">Contact Support</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center ">
+    <div class="col-sm-6 col-lg-3 m-3 p-4 pb-1">
+      <div class="rounded p-4 shadow" style="background-color: rgb(232, 230, 223);">
+        <h5 class="d-flex justify-content-center pb-3">Create Cashier Account</h5>
+        <div class="form-floating mb-3">
+          <input type="text" value="" class="form-control" id="regcashiername" placeholder="Cashier Name" required />
+          <label for="regcashiername" class="form-label text-muted">Cashier Name</label>
+          <div class="valid-feedback">Good to go! </div>
+          <div class="invalid-feedback">Enter Full Name</div>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" value="" id="regcashierpin" placeholder="Enter Pin Number" required />
+          <label for="regcashierpin" class="form-label text-muted">Enter Pin Number</label>
+          <div class="valid-feedback">Good to go! </div>
+          <div class="invalid-feedback">Enter Pin</div>
+        </div>
+        <div class="text-center">
+          <button onclick="addCashier()" type="submit" class="btn btn-dark text btn-sm w-50">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+<script src="js/login.js"></script> 
+
+</body>
+</html>

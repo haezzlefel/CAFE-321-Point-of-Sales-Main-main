@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+}
+
+.tab-content {
+    height: 71vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#pills-tab .nav-link.active,
+        #pills-tab .nav-link:hover {
+            color:rgb(242, 247, 247) !important; 
+            background-color: rgb(10, 10, 10) !important; 
+        }
+
+        #pills-tab .nav-link {
+            color: rgb(14, 13, 13); 
+        }
