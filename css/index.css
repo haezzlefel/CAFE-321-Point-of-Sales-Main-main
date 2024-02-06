@@ -15,6 +15,26 @@
   padding-bottom: 200px;
 }
 
+
+body {
+  background-image: url('/img/foot.webp');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; 
+  width: 100%;
+  bottom: 0;
+  padding: 10px 0;
+  margin: 0;
+  padding-bottom: 0px; 
+  padding-top: 0px; 
+  }
+
+  .social-icon {
+    color: white;
+    font-size: 24px;
+    margin-right: 10px; 
+}
+
 h1{
   position: relative;
   font-size: 2rem;
@@ -30,10 +50,10 @@ h1::before{
   left: 0;
   width: 0%;
   height: 100%;
-  color: #81848b;
+  color: rgb(104, 64, 64);
 
-  -webkit-text-stroke: 0vw #81848b;
-  border-right: 2px solid #81848b;
+  -webkit-text-stroke: 0vw rgb(104, 64, 64);
+  border-right: 1px solid rgb(104, 64, 64);
   overflow: hidden;
   /* transition:animate 6s linear infinite; */
    animation: animate 6s linear infinite;
