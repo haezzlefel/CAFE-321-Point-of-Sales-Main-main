@@ -22,8 +22,8 @@
 <body class="bg-dark" onload="">
   <div class="mt-5">
 
-    <div class="row justify-content-center ">
-      
+    <div class="row justify-content-center">
+      <!-- Login Form -->
       <div class="col-lg-6 m-3 p-4 pb-1">
         <div class="container col-sm-6 rounded p-4 shadow" style="background-color:  rgb(232, 230, 223);"> 
           <form name="loginform" class="needs-validation">
@@ -31,14 +31,14 @@
             <div class="form-floating mb-3">
               <input type="text" value="" class="form-control" id="cashiername" placeholder="Cashier Logged in" disabled="" required />
               <label for="cashiername" class="form-label text-muted">Cashier Logged in</label>
-            <div class="valid-feedback">Good to go! </div>
-            <div class="invalid-feedback">Select Cashier Name Below</div>
+              <div class="valid-feedback">Good to go! </div>
+              <div class="invalid-feedback">Select Cashier Name Below</div>
             </div>
             <div class="form-floating mb-3">
               <input type="password" class="form-control" value="" id="cashierpin" placeholder="Enter Pin Number" required />
               <label for="cashierpin" class="form-label text-muted">Enter Pin Number</label>
-            <div class="valid-feedback">Good to go! </div>
-            <div class="invalid-feedback">Enter Correct Pin</div>
+              <div class="valid-feedback">Good to go! </div>
+              <div class="invalid-feedback">Enter Correct Pin</div>
             </div>
             <div class="text-center">
               <button onclick="loginAuthenticate()" type="submit" class="btn btn-dark text btn-sm w-50">Login</button>
@@ -73,28 +73,26 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+      <!-- Create Cashier Account Form -->
+      <div class="col-lg-5 m-3 p-4 pb-1">
+        <div class="rounded p-4 shadow" style="background-color: rgb(232, 230, 223);">
+          <h5 class="d-flex justify-content-center pb-3">Create Cashier Account</h5>
+          <div class="form-floating mb-3">
+            <input type="text" value="" class="form-control" id="regcashiername" placeholder="Cashier Name" required />
+            <label for="regcashiername" class="form-label text-muted">Cashier Name</label>
+            <div class="valid-feedback">Good to go! </div>
+            <div class="invalid-feedback">Enter Full Name</div>
+          </div>
 
-  <div class="row justify-content-center ">
-    <div class="col-sm-6 col-lg-3 m-3 p-4 pb-1">
-      <div class="rounded p-4 shadow" style="background-color: rgb(232, 230, 223);">
-        <h5 class="d-flex justify-content-center pb-3">Create Cashier Account</h5>
-        <div class="form-floating mb-3">
-          <input type="text" value="" class="form-control" id="regcashiername" placeholder="Cashier Name" required />
-          <label for="regcashiername" class="form-label text-muted">Cashier Name</label>
-          <div class="valid-feedback">Good to go! </div>
-          <div class="invalid-feedback">Enter Full Name</div>
-        </div>
-
-        <div class="form-floating mb-3">
-          <input type="password" class="form-control" value="" id="regcashierpin" placeholder="Enter Pin Number" required />
-          <label for="regcashierpin" class="form-label text-muted">Enter Pin Number</label>
-          <div class="valid-feedback">Good to go! </div>
-          <div class="invalid-feedback">Enter Pin</div>
-        </div>
-        <div class="text-center">
-          <button onclick="addCashier()" type="submit" class="btn btn-dark text btn-sm w-50">Submit</button>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" value="" id="regcashierpin" placeholder="Enter Pin Number" required />
+            <label for="regcashierpin" class="form-label text-muted">Enter Pin Number</label>
+            <div class="valid-feedback">Good to go! </div>
+            <div class="invalid-feedback">Enter Pin</div>
+          </div>
+          <div class="text-center">
+            <button onclick="addCashier()" type="submit" class="btn btn-dark text btn-sm w-50">Submit</button>
+          </div>
         </div>
       </div>
     </div>
