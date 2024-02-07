@@ -18,12 +18,27 @@
         emailjs.init("PoP7J_YCxY7CufEyE");
         })();
     </script>
+    <style>
+      body {
+        background-image: url(img/foot.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        width: 100%;
+        bottom: 0;
+        padding: 10px 0;
+        margin: 0;
+        padding-bottom: 0px;
+        padding-top: 0px;
+      }
+    </style>
+  
 
 </head>
 <body class="bg-dark">
-    <div class="row justify-content-center pt-5 mt-5">
+    <div class="row justify-content-center pt-3 mt-3">
         <div class="col-lg-3 m-3 p-4 pb-1">
-          <div class="rounded p-4 shadow" style="background-color: rgb(232, 230, 223);">
+          <div class="rounded p-4 shadow" style="background-color:  rgba(160, 160, 150, 0.856);"> 
             <h5 class="d-flex justify-content-center pb-3">Email Support</h5>
 
             <div class="mb-3">
@@ -42,8 +57,8 @@
             </div>
 
             <div class="d-flex justify-content-between pb-3">
-                <button onclick="sendMail()" type="submit" class="btn btn-dark text">Submit</button>
                 <button onclick="window.location.assign('login.html')" type="submit" class="btn btn-dark text">Back</button>
+                <button onclick="sendMail()" type="submit" class="btn btn-dark text">Submit</button>
             </div>
            
           </div>

@@ -16,7 +16,20 @@
     setTimeout("preventBack()", 0);
     window.onunload = function () { null };
   </script>
-  
+  <style>
+    body {
+      background-image: url(img/foot.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      width: 100%;
+      bottom: 0;
+      padding: 10px 0;
+      margin: 0;
+      padding-bottom: 0px;
+      padding-top: 0px;
+    }
+  </style>
 
 </head>
 <body class="bg-dark" onload="">
@@ -25,7 +38,7 @@
     <div class="row justify-content-center">
       <!-- Login Form -->
       <div class="col-lg-6 m-3 p-4 pb-1">
-        <div class="container col-sm-6 rounded p-4 shadow" style="background-color:  rgb(232, 230, 223);"> 
+        <div class="container col-sm-6 rounded p-4 shadow" style="background-color:  rgba(160, 160, 150, 0.856);"> 
           <form name="loginform" class="needs-validation">
             <h5 class="d-flex justify-content-center pb-3">Admin Login</h5>
             <div class="form-floating mb-3">
@@ -46,23 +59,23 @@
           </form>
           <hr>
           <div class="text-center">
-            <h5>Cashier List</h5>
+            <h5 >Cashier List</h5>
           </div>  
           <br>
           <div class="mx-auto row">
               <div class="container mx-auto col-sm-12">
                 <div class="container mx-auto row text-center" id="cashierlist">
                   <div class=" mb-2 col-md-6">
-                    <button value="Zila" id="staticcashier1" onclick="staticCashier1()" type="button" class="btn btn-dark">Zila</button>
+                    <button value="Zila" id="staticcashier1" onclick="staticCashier1()" type="button" class="btn btn-secondary">Zila</button>
                   </div>
                   <div class=" mb-2 col-md-6">
-                    <button value="Hanapet" id="staticcashier2" onclick="staticCashier2()" type="button" class="btn btn-dark">Hanapet</button>
+                    <button value="Hanapet" id="staticcashier2" onclick="staticCashier2()" type="button" class="btn btn-secondary">Hanapet</button>
                   </div>
                   <div class=" mb-2 col-md-6">
-                    <button value="Zia" id="staticcashier3" onclick="staticCashier3()" type="button" class="btn btn-dark">Zia</button>
+                    <button value="Zia" id="staticcashier3" onclick="staticCashier3()" type="button" class="btn btn-secondary">Zia</button>
                   </div>
                   <div class=" mb-2 col-md-6">
-                    <button value="Nigu" id="staticcashier4" onclick="staticCashier4()" type="button" class="btn btn-dark">Nigu</button>
+                    <button value="Nigu" id="staticcashier4" onclick="staticCashier4()" type="button" class="btn btn-secondary">Nigu</button>
                   </div>
                 </div>
               </div>
@@ -75,7 +88,7 @@
       </div>
       <!-- Create Cashier Account Form -->
       <div class="col-lg-5 m-3 p-4 pb-1">
-        <div class="rounded p-4 shadow" style="background-color: rgb(232, 230, 223);">
+        <div class="rounded p-4 shadow" style="background-color:  rgba(160, 160, 150, 0.856);"> 
           <h5 class="d-flex justify-content-center pb-3">Create Cashier Account</h5>
           <div class="form-floating mb-3">
             <input type="text" value="" class="form-control" id="regcashiername" placeholder="Cashier Name" required />
