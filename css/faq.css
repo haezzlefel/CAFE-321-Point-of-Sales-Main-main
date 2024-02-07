@@ -12,28 +12,30 @@
 }
 
 .card {
-    background: #fff;
+    background: rgba(160, 160, 150, 0.856);
     color: #333;
     margin: 3rem auto;
-    width: 90%;
+    width: 40%;
     max-width: 50rem;
     min-height: 30rem;
-    border-radius: 2rem;
+    border-radius: 3rem;
 }
-
+.card {
+    background-color: #333;
+}
 .title {
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
     padding: 1rem;
 }
 
 .acc-container {
-    padding: 4rem 2rem;
+    padding: 1rem 2rem;
 }
 .acc-btn {
     width: 100%;
     padding: 1.6rem 2rem;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: pointer;
     background: inherit;
     border: none;
@@ -43,7 +45,7 @@
 }
 .acc-btn:after {
     content: "\27A4";
-    color: #fa8d0c;
+    color:rgb(170, 70, 70);
     float: right;
     transition: all 0.3s linear;
 }
