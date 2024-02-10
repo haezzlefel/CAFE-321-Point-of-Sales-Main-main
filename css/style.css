@@ -19,6 +19,16 @@ body {
     overflow-x: hidden;
 }
 
+.card:hover{
+    box-shadow: -28px 8px 63px 8px rgba(0,0,0,0.58);
+    -webkit-box-shadow: -28px 8px 63px 8px rgba(0,0,0,0.58);
+    -moz-box-shadow: -28px 8px 63px 8px rgba(0,0,0,0.58);
+transition: 0.5s;
+}
+.btn:hover{
+    background-color:rgb(102, 72, 7);
+    transition: 0.9s;
+}
 #pills-tab .nav-link.active,
         #pills-tab .nav-link:hover {
             color:rgb(242, 247, 247) !important; 

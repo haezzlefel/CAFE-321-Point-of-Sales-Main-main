@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyPOS</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <div class="bg-light py-3 px-2 vh-100">
+    <div class="row bg-secondary g-0">
+      <div class="col-sm-8 shadow-sm">
+        <div class="card m-3">
+          <div class="card-body d-flex justify-content-between align-items-top py-1">
+            <div>
+              <small>Cashier Name: <span id="cashier" class="fw-bold"></span></small>
+              <br>
+              <small>Date and Time: <span id="cdt" class="fw-bold"></span></small>
+            </div>
+            <div>
+              <button class="btn btn-dark my-1" onclick="cashierLogout()">Logout</button>
+            </div>  
+          </div>
+        </div>
+              
+        <div class="card m-3 shadow-sm">
+          <div class="card-body">
+            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-menu1-tab" data-bs-toggle="pill" data-bs-target="#pills-menu1" type="button" role="tab" aria-controls="pills-menu1" aria-selected="true">Frappe</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-menu2-tab" data-bs-toggle="pill" data-bs-target="#pills-menu2" type="button" role="tab" aria-controls="pills-menu2" aria-selected="false">Iced</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-menu3-tab" data-bs-toggle="pill" data-bs-target="#pills-menu3" type="button" role="tab" aria-controls="pills-menu3" aria-selected="false">Hot</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-menu4-tab" data-bs-toggle="pill" data-bs-target="#pills-menu4" type="button" role="tab" aria-controls="pills-menu4" aria-selected="false">Soda Ade</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-menu5-tab" data-bs-toggle="pill" data-bs-target="#pills-menu5" type="button" role="tab" aria-controls="pills-menu5" aria-selected="false">Pizza</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-menu6-tab" data-bs-toggle="pill" data-bs-target="#pills-menu6" type="button" role="tab" aria-controls="pills-menu6" aria-selected="false">Snacks</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-menu7-tab" data-bs-toggle="pill" data-bs-target="#pills-menu7" type="button" role="tab" aria-controls="pills-menu7" aria-selected="false">Rice Meals</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-menu8-tab" data-bs-toggle="pill" data-bs-target="#pills-menu8" type="button" role="tab" aria-controls="pills-menu8" aria-selected="false">Pastry</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-menu9-tab" data-bs-toggle="pill" data-bs-target="#pills-menu9" type="button" role="tab" aria-controls="pills-menu9" aria-selected="false">Extras</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card m-3">
+          <div class="card-body">
+            <div class="tab-content" id="pills-tabContent">
+              <!--Tab 1-->
+              <div class="tab-pane fade show active" id="pills-menu1" role="tabpanel" aria-labelledby="pills-menu1-tab">
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 g-4">
+                  <div class="col">
+                    <div class="card" onclick="ordercart(1, 'Caramel Frappe', 120.00);selectaudio.play();">
+                      <img draggable="false" src="img/caramelfrappe.jpg" class="card-img-top px-4 pt-4" alt="..." >
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small class="text-center">Caramel Frappe</small>
+                        <p class="card-text fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(2, 'Cookies & Cream Frappe', 120.00);selectaudio.play();">
+                      <img draggable="false" src="img/cc.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small class="text-center">Cookies & Cream</small>
+                        <p class="card-text fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(2, 'Cookie Crumble Frappe', 130.00);selectaudio.play();">
+                      <img draggable="false" src="img/carcrum.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small class="text-center">Cookie Crumble</small>
+                        <p class="card-text fw-bold text-secondary">P 130.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(3, 'Chocolate Overload Frappe', 130.00);selectaudio.play();">
+                      <img draggable="false" src="img/chocolateover.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small class="text-center">Choco Overload</small>
+                        <p class="card-text fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(4, 'Dark Mocha Frappe', 120.00);selectaudio.play();">
+                      <img draggable="false" src="img/darkm.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small class="text-center">Dark Mocha</small>
+                        <p class="card-text fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(5, 'Java Chip Frappe', 120.00);selectaudio.play();">
+                      <img draggable="false" src="img/javachip.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small class="text-center">Java Chip </small>
+                        <p class="card-text fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(6, 'Peppermint Mocha Frappe', 120.00);selectaudio.play();">
+                      <img draggable="false" src="img/peppermintf.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small class="text-center">Peppermint</small>
+                        <p class="card-text fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(6, 'Milky Matcha Frappe', 120.00);selectaudio.play();">
+                      <img draggable="false" src="img/milky matchaf.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Milky Matcha</small>
+                        <p class="card-text text-truncate fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(7, 'Dirty Matcha Frappe', 130.00);selectaudio.play();">
+                      <img draggable="false" src="img/milky matchaf.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Dirty Matcha</small>
+                        <p class="card-text text-truncate fw-bold text-secondary">P 130.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(8, 'White Mocha Frappe', 120.00);selectaudio.play();">
+                      <img draggable="false" src="img/whitecc.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>White Mocha</small>
+                        <p class="card-text text-truncate fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(8, 'White Choco Crumble Frappe', 120.00);selectaudio.play();">
+                      <img draggable="false" src="img/whitecrumbles.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>WC Crumble</small>
+                        <p class="card-text text-truncate fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="card" onclick="ordercart(9, 'White Choco', 120.00);selectaudio.play();">
+                      <img draggable="false" src="img/whitecc.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>White Choco</small>
+                        <p class="card-text text-truncate fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(13, 'Zombie Frappe', 110.00);selectaudio.play();">
+                      <img draggable="false" src="img/zombiefra.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Zombie </small>
+                        <p class="card-text fw-bold text-secondary">P 110.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(14, 'Bloody Mary Frappe', 110.00);selectaudio.play();">
+                      <img draggable="false" src="img/bloodymaria.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Bloody Mary</small>
+                        <p class="card-text fw-bold text-secondary">P 110.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(10, 'Strawberry Frappe', 110.00);selectaudio.play();">
+                      <img draggable="false" src="img/strawberyyfra.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Strawberry</small>
+                        <p class="card-text text-truncate fw-bold text-secondary">P 110.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(11, ' Blueberry Frappe', 110.00);selectaudio.play();">
+                      <img draggable="false" src="img/blufrap.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Blueberry</small>
+                        <p class="card-text fw-bold text-secondary">P 110.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(12, 'Mango Frappe', 110.00);selectaudio.play();">
+                      <img draggable="false" src="img/mango frappe.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Mango</small>
+                        <p class="card-text fw-bold text-secondary">P 110.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(15, 'BOGO BS Frappe', 199.00);selectaudio.play();">
+                      <img draggable="false" src="img/blustraw.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>BOGO BS</small>
+                        <p class="card-text fw-bold text-secondary">P 199.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(16, 'BOGO BM Frappe', 199.00);selectaudio.play();">
+                      <img draggable="false" src="img/blumangof.jpg"  class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>BOGO BM</small>
+                        <p class="card-text fw-bold text-secondary">P 199.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(17, 'BOGO MS Frappe', 199.00);selectaudio.play();">
+                      <img draggable="false" src="img/mstarw.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>BOGO MS</small>
+                        <p class="card-text fw-bold text-secondary">P 199.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(18, 'BOGO SS Frappe', 199.00);selectaudio.play();">
+                      <img draggable="false" src="img/sstraw.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>BOGO SS</small>
+                      <p class="card-text fw-bold text-secondary">P 199.00</p>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(19, 'BOGO BB Frappe', 199.00);selectaudio.play();">
+                      <img draggable="false" src="img/bblueb.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>BOGO BB</small>
+                        <p class="card-text fw-bold text-secondary">P 199.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(20, 'BOGO MM Frappe', 199.00);selectaudio.play();">
+                      <img draggable="false" src="img/mmanag.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>BOGO MM</small>
+                      <p class="card-text fw-bold text-secondary">P 199.00</p>
+                    </div>
+                  </div>
+                  </div>
+                 </div>
+              </div>
+              <!--Tab 2-->
+              <div class="tab-pane fade" id="pills-menu2" role="tabpanel" aria-labelledby="pills-menu2-tab">
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 g-4">
+                  <div class="col">
+                    <div class="card" onclick="ordercart(21, 'Iced Cafe Americano', 60.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Cafe Americano</small>
+                        <p class="card-text fw-bold text-secondary">P 60.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(22, 'Iced Cappuccino Frappe', 80.00);selectaudio.play();">
+                      <img draggable="false" src="img/icedc.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Cappuccino</small>
+                        <p class="card-text fw-bold text-secondary">P 80.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(23, 'Iced Cafe Latte', 80.00);selectaudio.play();">
+                      <img draggable="false" src="img/spanishl.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Cafe Latte</small>
+                        <p class="card-text fw-bold text-secondary">P 80.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(24, 'Iced Caramel Macchiatto', 110.00);selectaudio.play();">
+                      <img draggable="false" src="img/iced caramelm.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>C. Macchiatto</small>
+                        <p class="card-text fw-bold text-secondary">P 110.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(24, 'Iced Caramel Latte', 110.00);selectaudio.play();">
+                      <img draggable="false" src="img/caramella.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Caramel Latte</small>
+                        <p class="card-text fw-bold text-secondary">P 110.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(25, 'Iced Dark Mocha', 110.00);selectaudio.play();">
+                      <img draggable="false" src="img/darkmoca.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Dark Mocha</small>
+                        <p class="card-text fw-bold text-secondary">P 110.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(26, 'Iced White Mocha', 110.00);selectaudio.play();">
+                      <img draggable="false" src="img/spanishl.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>White Mocha</small>
+                        <p class="card-text fw-bold text-secondary">P 110.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(27, 'Iced Spanish Latte', 110.00);selectaudio.play();">
+                      <img draggable="false" src="img/spanishl.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Spanish Latte</small>
+                        <p class="card-text fw-bold text-secondary">P 110.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(28, 'Iced Dalgona Latte', 110.00);selectaudio.play();">
+                      <img draggable="false" src="img/dal.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Dalgona Latte</small>
+                        <p class="card-text fw-bold text-secondary">P 110.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(29, 'Iced Milky Matcha', 120.00);selectaudio.play();">
+                      <img draggable="false" src="img/milky matcha.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Milky Matcha</small>
+                        <p class="card-text fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(30, 'Iced Dirty Matcha', 110.00);selectaudio.play();">
+                      <img draggable="false" src="img/dirtymathchala.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Dirty Matcha</small>
+                        <p class="card-text fw-bold text-secondary">P 110.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(31, 'Iced Milky Blueberry', 100.00);selectaudio.play();">
+                      <img draggable="false" src="img/milkyberi.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Milky Blueberry</small>
+                        <p class="card-text fw-bold text-secondary">P 100.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(32, 'Iced Milky Mango', 100.00);selectaudio.play();">
+                      <img draggable="false" src="img/milkymango.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Milky Mango</small>
+                        <p class="card-text fw-bold text-secondary">P 100.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(33, 'Iced Milky Strawberry', 100.00);selectaudio.play();">
+                      <img draggable="false" src="img/milkystraw.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Milky Strawberry</small>
+                        <p class="card-text fw-bold text-secondary">P 100.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              <!--Tab 3-->
+              <div class="tab-pane fade" id="pills-menu3" role="tabpanel" aria-labelledby="pills-menu3-tab">
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 g-4">
+                  <div class="col">
+                    <div class="card" onclick="ordercart(34, 'Hot Cafe Americano', 50.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Cafe Americano</small>
+                        <p class="card-text fw-bold text-secondary">P 50.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(35, 'Hot Cappuccino', 70.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Cappuccino</small>
+                        <p class="card-text fw-bold text-secondary">P 70.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(36, 'Hot Cafe Latte', 60.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Cappuccino</small>
+                        <p class="card-text fw-bold text-secondary">P 60.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(37, 'Hot Caramel Macchiato', 90.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>C. Macchiato</small>
+                        <p class="card-text fw-bold text-secondary">P 90.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col ">
+                    <div class="card" onclick="ordercart(38, 'Hot Dark Mocha', 90.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Dark Mocha</small>
+                        <p class="card-text fw-bold text-secondary">P 90.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(39, 'Hot White Mocha', 90.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>White Mocha</small>
+                        <p class="card-text fw-bold text-secondary">P 90.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(40, 'Hot Spanish Latte', 90.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Spanish Latte</small>
+                        <p class="card-text fw-bold text-secondary">P 90.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(41, 'Hot Dalgona Latte', 100.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Dalgona Latte</small>
+                        <p class="card-text fw-bold text-secondary">P 100.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(42, 'Hot Milky Matcha', 90.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Milky Matcha</small>
+                        <p class="card-text fw-bold text-secondary">P 90.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(43, 'Hot Dirty Matcha', 100.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Dirty Matcha</small>
+                        <p class="card-text fw-bold text-secondary">P 100.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(44, 'Hot Green Tea', 50.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Green Tea</small>
+                        <p class="card-text fw-bold text-secondary">P 50.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(45, 'Hot Black Tea', 50.00);selectaudio.play();">
+                      <img draggable="false" src="img/amerikano.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Black Tea</small>
+                        <p class="card-text fw-bold text-secondary">P 50.00</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--Tab 4-->
+              <div class="tab-pane fade" id="pills-menu4" role="tabpanel" aria-labelledby="pills-menu4-tab">
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 g-4">
+                  <div class="col">
+                    <div class="card" onclick="ordercart(46, 'Strawberry Ade', 80.00);selectaudio.play();">
+                      <img draggable="false" src="img/sodas.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Strawberry Ade</small>
+                        <p class="card-text fw-bold text-secondary">P 80.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(47, 'Blueberry Ade', 80.00);selectaudio.play();">
+                      <img draggable="false" src="img/bsoda.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Blueberry Ade</small>
+                        <p class="card-text fw-bold text-secondary">P 80.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(48, 'Mango Ade', 80.00);selectaudio.play();">
+                      <img draggable="false" src="img/mangoade.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Mango Ade</small>
+                        <p class="card-text fw-bold text-secondary">P 80.00</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--Tab 5-->
+              <div class="tab-pane fade" id="pills-menu5" role="tabpanel" aria-labelledby="pills-menu5-tab">
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 g-4">
+                  <div class="col">
+                    <div class="card" onclick="ordercart(49, 'Beef & Mushroom', 150.00);selectaudio.play();">
+                      <img draggable="false" src="img/beefand.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Beef & Mushroom</small>
+                        <p class="card-text fw-bold text-secondary">P 150.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(50, 'Hawaian Delight', 150.00);selectaudio.play();">
+                      <img draggable="false" src="img/hawaian.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Hawaian Delight</small>
+                        <p class="card-text fw-bold text-secondary">P 150.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(51, 'Pepperoni', 150.00);selectaudio.play();">
+                      <img draggable="false" src="img/pepperonip.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Pepperoni</small>
+                        <p class="card-text fw-bold text-secondary">P 150.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+            </div>
+          </div>
+              <!--Tab 6-->
+              <div class="tab-pane fade" id="pills-menu6" role="tabpanel" aria-labelledby="pills-menu6-tab">
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 g-4">
+                  <div class="col">
+                    <div class="card" onclick="ordercart(52, 'Nachos', 120.00);selectaudio.play();">
+                      <img draggable="false" src="img/nachos.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Nachos</small>
+                        <p class="card-text fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(53, 'Tacos', 100.00);selectaudio.play();">
+                      <img draggable="false" src="img/taco.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Tacos</small>
+                        <p class="card-text fw-bold text-secondary">P 100.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(54, 'Quesadilla', 100.00);selectaudio.play();">
+                      <img draggable="false" src="img/quesa.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Quesadilla</small>
+                        <p class="card-text fw-bold text-secondary">P 100.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(55, 'Clubhouse', 120.00);selectaudio.play();">
+                      <img draggable="false" src="img/clubhouse.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Clubhouse</small>
+                        <p class="card-text fw-bold text-secondary">P 120.00</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card" onclick="ordercart(56, 'Fries', 70.00);selectaudio.play();">
+                      <img draggable="false" src="img/fries.jpg" class="card-img-top px-4 pt-4" alt="...">
+                      <div class="card-body d-flex flex-column align-items-center">
+                        <small>Fries</small>
+                        <p class="card-text fw-bold text-secondary">P 70.00</p>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          <!--Tab 7-->
+          <div class="tab-pane fade" id="pills-menu7" role="tabpanel" aria-labelledby="pills-menu7-tab">
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 g-4">
+              <div class="col">
+                <div class="card" onclick="ordercart(57, 'Beef Tapa', 120.00);selectaudio.play();">
+                  <img draggable="false" src="img/tapa.jpg" class="card-img-top px-4 pt-4" alt="...">
+                  <div class="card-body d-flex flex-column align-items-center">
+                    <small>Beef Tapa</small>
+                    <p class="card-text fw-bold text-secondary">P 120.00</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" onclick="ordercart(58, 'Sisig', 120.00);selectaudio.play();">
+                  <img draggable="false" src="img/sisig.jpg" class="card-img-top px-4 pt-4" alt="...">
+                  <div class="card-body d-flex flex-column align-items-center">
+                    <small>Sisig</small>
+                    <p class="card-text fw-bold text-secondary">P 120.00</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card" onclick="ordercart(59, 'Spam', 100.00);selectaudio.play();">
+                  <img draggable="false" src="img/spam1.jpg" class="card-img-top px-4 pt-4" alt="...">
+                  <div class="card-body d-flex flex-column align-items-center">
+                    <small>Spam</small>
+                    <p class="card-text fw-bold text-secondary">P 100.00</p>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+
+      <!--Tab 8-->
+      <div class="tab-pane fade" id="pills-menu8" role="tabpanel" aria-labelledby="pills-menu8-tab">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 g-4">
+          <div class="col">
+            <div class="card" onclick="ordercart(60, 'Cookies & Cream Croffles', 150.00);selectaudio.play();">
+              <img draggable="false" src="img/cccroffles.jpeg" class="card-img-top px-4 pt-4" alt="...">
+              <div class="card-body d-flex flex-column align-items-center">
+                <small>Cookies & Cream</small>
+                <p class="card-text fw-bold text-secondary">P 150.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" onclick="ordercart(61, 'Biscoff Caramel Croffles', 150.00);selectaudio.play();">
+              <img draggable="false" src="img/biscoff.jpeg" class="card-img-top px-4 pt-4" alt="...">
+              <div class="card-body d-flex flex-column align-items-center">
+                <small>Biscoff Caramel</small>
+                <p class="card-text fw-bold text-secondary">P 150.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" onclick="ordercart(62, 'Banana Choco Croffles', 150.00);selectaudio.play();">
+              <img draggable="false" src="img/banana.jpeg" class="card-img-top px-4 pt-4" alt="...">
+              <div class="card-body d-flex flex-column align-items-center">
+                <small>Banana Choco</small>
+                <p class="card-text fw-bold text-secondary">P 150.00</p>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+       <!--Tab 9-->
+       <div class="tab-pane fade" id="pills-menu9" role="tabpanel" aria-labelledby="pills-menu9-tab">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-5 g-4">
+          <div class="col">
+            <div class="card" onclick="ordercart(63, 'Espresso', 20.00);selectaudio.play();">
+              <img draggable="false" src="img/espresso.jpeg" class="card-img-top px-4 pt-4" alt="..." >
+              <div class="card-body d-flex flex-column align-items-center">
+                <small class="text-center">Espresso</small>
+                <p class="card-text fw-bold text-secondary">P 20.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" onclick="ordercart(64, 'Syrup', 20.00);selectaudio.play();">
+              <img draggable="false" src="img/syrup.webp" class="card-img-top px-4 pt-4" alt="...">
+              <div class="card-body d-flex flex-column align-items-center">
+                <small class="text-center">Syrup</small>
+                <p class="card-text fw-bold text-secondary">P 20.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" onclick="ordercart(65, 'Beef', 50.00);selectaudio.play();">
+              <img draggable="false" src="img/beef taco.jpg" class="card-img-top px-4 pt-4" alt="...">
+              <div class="card-body d-flex flex-column align-items-center">
+                <small class="text-center">Beef</small>
+                <p class="card-text fw-bold text-secondary">P 50.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" onclick="ordercart(66, 'Cheese', 20.00);selectaudio.play();">
+              <img draggable="false" src="img/cheese.webp" class="card-img-top px-4 pt-4" alt="...">
+              <div class="card-body d-flex flex-column align-items-center">
+                <small class="text-center">Cheese</small>
+                <p class="card-text fw-bold text-secondary">P 20.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" onclick="ordercart(67, 'Rice', 20.00);selectaudio.play();">
+              <img draggable="false" src="img/rice1.jpeg" class="card-img-top px-4 pt-4" alt="...">
+              <div class="card-body d-flex flex-column align-items-center">
+                <small class="text-center">Rice </small>
+                <p class="card-text fw-bold text-secondary">P 20.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" onclick="ordercart(68, 'Half Rice', 10.00);selectaudio.play();">
+              <img draggable="false" src="img/rice1.jpeg" class="card-img-top px-4 pt-4" alt="...">
+              <div class="card-body d-flex flex-column align-items-center">
+                <small>Half Rice</small>
+                <p class="card-text text-truncate fw-bold text-secondary">P 10.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" onclick="ordercart(69, 'Egg', 20.00);selectaudio.play();">
+              <img draggable="false" src="img/egg.jpeg" class="card-img-top px-4 pt-4" alt="...">
+              <div class="card-body d-flex flex-column align-items-center">
+                <small>Egg</small>
+                <p class="card-text text-truncate fw-bold text-secondary">P 20.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" onclick="ordercart(70, 'Bacon', 20.00);selectaudio.play();">
+              <img draggable="false" src="img/bacon.jpg" class="card-img-top px-4 pt-4" alt="...">
+              <div class="card-body d-flex flex-column align-items-center">
+                <small>Bacon</small>
+                <p class="card-text text-truncate fw-bold text-secondary">P 20.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" onclick="ordercart(71, 'Ham', 20.00);selectaudio.play();">
+              <img draggable="false" src="img/ham.jpeg" class="card-img-top px-4 pt-4" alt="...">
+              <div class="card-body d-flex flex-column align-items-center">
+                <small>Ham</small>
+                <p class="card-text text-truncate fw-bold text-secondary">P 20.00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+    
+    </div>
+    <div class="col-sm-4">
+        <div class="card m-3 shadow-sm">
+            <div class="card-body pb-0">
+                <h4 class="text-center fw-bold">ORDER LIST</h4>
+                <h6 class="d-flex justify-content-between align-items-center"><span>Transaction #: <span id="transnum" class="fw-bold text-secondary"></span></span><button class="btn btn-sm btn-danger" onclick="cartClear(); validateCheckout();">Clear</button></h6>
+            </div>
+            <hr>
+            <ul id="ordersummary" class="list-unstyled p-3" style="height: 30vh; overflow-y: auto;">
+            </ul>
+            <hr>
+            <ul class="list-unstyled">
+                <li class="d-flex justify-content-between align-items-center">
+                    <p class="px-3">Total Items:</p><p class="card-text px-3 fw-bold" id="totalitems">0</p>
+                </li>
+                <li class="d-flex justify-content-between align-items-center">
+                    <p class="px-3">Total Amount:</p><p class="fw-bold">P<span class="card-text px-3 fw-bold" id="totalcost">0</span></p>
+                </li>
+                <li class="text-center">
+                  <button type="button" class="btn btn-dark btn-md w-50" data-bs-toggle="modal" data-bs-target="#checkoutModal" id="checkout" disabled="" >Check Out</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title" id="staticBackdropLabel">Transaction Number:  <span id="modaltransnum" class="text-danger fw-bold"></span></h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearAmount()"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="totalamtlbl" class="form-label">Total Amount:</label>
+                <input type="text" class="form-control" id="totalamt" aria-describedby="totalamt" disabled>
+              </div>
+              <div class="mb-3">
+                <label for="paidamtlbl" class="form-label">Amount Paid:</label>
+                <input type="text" class="form-control" id="paidamt" aria-describedby="paidamt">
+              </div>
+              <div class="mb-1">
+                <label for="change" class="form-label">Change:</label>
+                <input type="text" class="form-control" id="change" aria-describedby="change" disabled>
+              </div>
+            </form>
+          </div>
+          <div class="modal-body text-center ps-5 pe-5">
+            <div class="row mt-0 gx-2">
+              <div class="col-4"><button class="btn w-100 btn-secondary pill m-1 text-center" onclick="insertAmount('7');selectaudio.play();">7</button></div>
+              <div class="col-4"><button class="btn w-100 btn-secondary pill m-1" onclick="insertAmount('8');selectaudio.play();">8</button></div>
+              <div class="col-4"><button class="btn w-100 btn-secondary pill m-1" onclick="insertAmount('9');selectaudio.play();">9</button></div>
+              <div class="col-4"><button class="btn w-100 btn-secondary pill m-1" onclick="insertAmount('4');selectaudio.play();">4</button></div>
+              <div class="col-4"><button class="btn w-100 btn-secondary pill m-1" onclick="insertAmount('5');selectaudio.play();">5</button></div>
+              <div class="col-4"><button class="btn w-100 btn-secondary pill m-1" onclick="insertAmount('6');selectaudio.play();">6</button></div>
+              <div class="col-4"><button class="btn w-100 btn-secondary pill m-1" onclick="insertAmount('1');selectaudio.play();">1</button></div>
+              <div class="col-4"><button class="btn w-100 btn-secondary pill m-1" onclick="insertAmount('2');selectaudio.play();">2</button></div>
+              <div class="col-4"><button class="btn w-100 btn-secondary pill m-1" onclick="insertAmount('3');selectaudio.play();">3</button></div>
+              <div class="col-4"><button class="btn w-100 btn-secondary pill m-1" onclick="insertAmount('.');selectaudio.play();">.</button></div>
+              <div class="col-4"><button class="btn w-100 btn-secondary pill m-1 mb-3" onclick="insertAmount('0');selectaudio.play();">0</button></div>
+              <div class="col-4"><button class="btn w-100 btn-secondary pill m-1 mb-3" onclick="clearAmount('');selectaudio.play();">Clear</button></div>
+              <hr>
+            </div>
+            <div class="row d-flex justify-content-between mb-3">
+              <div class="col-3">
+                <button class="btn btn-secondary btn-md rounded-pill" onclick="insertExactAmount()">Exact Amount</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-dark btn-md pill" data-bs-toggle="modal" data-bs-target="#gcashModal">Pay with GCash</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-dark btn-md pill" data-bs-toggle="modal" data-bs-target="#mayaModal">Pay with Maya</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-secondary btn-md rounded-pill" id="confirmamt" onclick="confirmCheckout(); selectaudio.play(); receiptDetails()" data-bs-toggle="modal" data-bs-target="#receiptModal" data-bs-dismiss="modal" disabled="">Proceed Checkout</button>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Receipt Modal -->
+      <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="text-center">
+              <img src="img/logologo.png" class="img-fluid pt-3" style="width: 100px;" alt="">
+              <h5 class="modal-title text-center py-2 fw-bold">Transaction Receipt</span></h5>
+              <p class="my-0">Address: #3 10th St. Pacita 1, SPL</p>
+              <p class="my-0">Contact No: 09277198625</p>
+              <p class="my-0">Cashier Name: <span id="rcashiername"></span></p>
+            </div>
+            <hr>
+            <div class="text-center">
+                <div>
+                  <p>Transaction No: <span id="receipttransnum" class="fw-bold"></span></p>
+                </div>
+                <div>
+                  <p>Date: <span id="receiptdt" class="fw-bold"></span></p>
+                </div>
+                <div>
+                  <p>Total Amount: P <span id="receipttotalamt" class="fw-bold"></span></p>
+                </div>
+                <div>
+                  <p>Cash Received: P <span id="receiptcashreceived" class="fw-bold"></span></p>
+                </div>
+                <div>
+                  <p>Change: P <span id="receiptchange" class=" fw-bold"></span></p>
+                </div>
+                <div>
+                  <p>Mode of Payment: <span id="receiptmop" class="fw-bold"></span></p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col text-center">
+                <button class="btn btn-md btn-dark btn-md pill mb-3" onclick="cartClear(); transactionNumber(); clearAmount()" data-bs-dismiss="modal">Next Customer</button>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+
+      <!-- GCash Modal -->
+      <div class="modal fade" id="gcashModal" tabindex="-1" aria-labelledby="gcashModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+          
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="text-center">
+              <h5 class="mt-3 mb-3">Scan to pay via GCash</h5>
+              <img src="img/gcash.jpg" class="img-fluid my-4" style="width: 300px;" alt="">
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col text-center mb-3">
+                <button class="btn btn-md btn-dark btn-md pill mb-3" onclick="gcashPayment()" data-bs-dismiss="modal">Confirm Payment</button>
+              </div>
+            </div>
+        </div>
+        </div>
+      </div>
+      <!-- maya Modal -->
+      <div class="modal fade" id="mayaModal" tabindex="-1" aria-labelledby="mayaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+          
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="text-center">
+              <h5 class="mt-3 mb-3">Scan to pay via Maya</h5>
+              <img src="img/maya.jpg" class="img-fluid my-4" style="width: 300px;" alt="">
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col text-center mb-3">
+                <button class="btn btn-md btn-dark btn-md pill mb-3" onclick="mayaPayment()" data-bs-dismiss="modal">Confirm Payment</button>
+              </div>
+            </div>
+        </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<script src="js/pos.js"></script> 
+<script src="js/dt.js"></script> 
+<!--<script src="js/calculate.js"></script> --->
+<script src="js/posmaya.js"></script>
+<script src="js/series.js"></script>
+
+</body>
+</html>
